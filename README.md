@@ -42,6 +42,31 @@ A compact, USB-powered AVR programmer with an integrated **40-pin ZIF socket** a
 
 ![ZIF placement guide — always start at pin-1](photo/zif-help.png)
 
+### IDC-10 ISP Header Pinout (SANA)
+
+When programming targets in-circuit, use the **10-pin IDC** header. It also carries the **rescue clock** (`PROG_XTL1`) to keep “fuse-bricked” MCUs alive during programming.
+
+> ⚠️ **Cautions**  
+> • If your target board is self-powered, **do not connect PROG_VCC** (Pin 4).  
+> • Always verify **keying/orientation** (Pin-1) before plugging the cable.  
+> • For EEPROMs, ensure the device capacity matches the operation and that any **WP** (write-protect) pins are not asserted.  
+> • If your target isn’t 5 V tolerant, use proper **level shifting** and power arrangements.
+
+| Pin | Signal      | Notes                                           |
+|:---:|-------------|--------------------------------------------------|
+| 1   | PROG_SCK    | SPI clock                                        |
+| 2   | PROG_GND    | Ground                                           |
+| 3   | PROG_MISO   | MCU → Programmer                                  |
+| 4   | PROG_VCC    | **Optional** target power (disconnect if self-powered) |
+| 5   | PROG_XTL1   | **Clock injection** to target `XTAL1`            |
+| 6   | PROG_RESET  | Target reset                                     |
+| 7   | —           | Not connected                                    |
+| 8   | —           | Not connected                                    |
+| 9   | PROG_MOSI   | Programmer → MCU                                  |
+| 10  | PROG_GND    | Ground                                           |
+
+![IDC-10 pinout — SANA programmer](photo/10way_sana_programmer.png)
+
 ---
 
 ## Repository Contents
