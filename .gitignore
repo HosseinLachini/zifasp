@@ -1,0 +1,20 @@
+# Build outputs (keep them out of git)
+build/
+
+# Common artifacts
+*.elf
+*.hex
+*.bin
+*.map
+*.tar.gz
+*.zip
+*.lst
+*_readback.hex
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
