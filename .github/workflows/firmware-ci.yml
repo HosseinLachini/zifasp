@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install AVR toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-avr avr-libc make zip tar
+
+      - name: Build (Makefile)
+        working-directory: SANA_USBASP
+        env:
+          OUT_BASE: ${{ github.workspace }}/build
+        run: |
+          make all
+          ls -lah ../build/SANA_UsbAsp
+
+      - name: Upload firmware artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ github.sha }}
+          path: |
+            build/SANA_UsbAsp/*.hex
+            build/SANA_UsbAsp/*.bin
+            build/SANA_UsbAsp/*.elf
+            build/SANA_UsbAsp/*.map
+            build/SANA_UsbAsp/*.zip
+            build/SANA_UsbAsp/*.tar.gz
+
