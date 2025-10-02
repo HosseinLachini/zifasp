@@ -1,0 +1,23 @@
+name: Bug report
+description: Report a problem
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Description
+      placeholder: What happened? What did you expect?
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Firmware version / commit
+      placeholder: e.g., v1.0.0 or 7c9a1ab
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      placeholder: 1) ... 2) ... 3) ...
+  - type: textarea
+    attributes:
+      label: Logs / output
+      render: shell
+

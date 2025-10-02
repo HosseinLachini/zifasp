@@ -1,0 +1,15 @@
+name: Feature request
+description: Suggest an idea
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Motivation
+      placeholder: Why is this feature useful?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposal
+      placeholder: How should it work?
+
