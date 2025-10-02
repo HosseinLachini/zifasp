@@ -1,3 +1,8 @@
+[![CI](https://github.com/HosseinLachini/zifasp/actions/workflows/firmware-ci.yml/badge.svg)](https://github.com/HosseinLachini/zifasp/actions/workflows/firmware-ci.yml)
+[![Latest Release](https://img.shields.io/github/v/release/HosseinLachini/zifasp)](https://github.com/HosseinLachini/zifasp/releases)
+[![License](https://img.shields.io/badge/license-GPL--2.0-informational)](#license)
+[![Stars](https://img.shields.io/github/stars/HosseinLachini/zifasp?style=social)](https://github.com/HosseinLachini/zifasp/stargazers)
+
 # SANA USBasp – Smart ZIF-Socket AVR Programmer
 
 ![Pocket size — next to a ruler](photo/ruler.JPG)
