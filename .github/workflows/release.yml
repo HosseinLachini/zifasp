@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install AVR toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-avr avr-libc make zip tar
+
+      - name: Build (Makefile)
+        working-directory: SANA_USBASP
+        env:
+          OUT_BASE: ${{ github.workspace }}/build
+        run: |
+          make all
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            build/SANA_UsbAsp/*.hex
+            build/SANA_UsbAsp/*.bin
+            build/SANA_UsbAsp/*.elf
+            build/SANA_UsbAsp/*.map
+            build/SANA_UsbAsp/*.zip
+            build/SANA_UsbAsp/*.tar.gz
+
